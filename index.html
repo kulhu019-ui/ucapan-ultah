@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Sayang ❤️</title>
+  
+  <!-- Library Pendukung: SweetAlert2 & AOS Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique:wght@400;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Shippori Antique', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #fecfef, #ff9a9e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 380px;
+      width: 100%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .stiker {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 15px;
+      object-fit: contain;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 1.6em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #4a4a4a;
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background: #d63384;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 0.95em;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musik Latar (Otomatis Berjalan saat Tombol Ditekan) -->
+  <audio id="musik" loop>
+    <!-- Ganti URL musik mp3 di bawah sesuai lagu favoritmu -->
+    <source src="https://feeldreams.github.io/audio/nightchanges.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" data-aos="zoom-in">
+    <!-- Gambar Stiker Lucu -->
+    <img id="stikerUtama" class="stiker" src="https://feeldreams.github.io/bunga.gif" alt="Stiker Ultah">
+
+    <h1>Happy Birthday! 🎉</h1>
+    
+    <!-- EDIT TEKS UCAPAN KALIMAT BERURUTAN DI SINI -->
+    <p data-aos="zoom-in" data-aos-delay="100">Selamat ulang tahun ya manis! 🥰</p>
+    <p data-aos="zoom-in" data-aos-delay="300">Semoga panjang umur dan sehat selalu.</p>
+    <p data-aos="zoom-in" data-aos-delay="500">Terima kasih udah hadir dan melengkapi hari-hariku.</p>
+    <p data-aos="zoom-in" data-aos-delay="700">Semoga semua impianmu tercapai di usia baru ini! ✨</p>
+    
+    <button class="btn" onclick="mulaiKejutan()">Klik di Sini ✨</button>
+  </div>
+
+  <script>
+    // Inisialisasi Efek Animasi Teks (AOS)
+    AOS.init({ duration: 800 });
+
+    function mulaiKejutan() {
+      // 1. Putar Musik
+      var audio = document.getElementById("musik");
+      audio.play();
+
+      // 2. Efek Kembang Api (Confetti)
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+
+      // 3. Pop-up Pertanyaan Pertama
+      Swal.fire({
+        title: 'Selamat Ulang Tahun Sayang! ❤️',
+        text: 'Ada pesan spesial lagi nih, mau baca lanjutannya?',
+        imageUrl: 'https://feeldreams.github.io/pandakuning.gif',
+        imageWidth: 120,
+        imageHeight: 120,
+        confirmButtonText: 'Mau Banget! 💕',
+        confirmButtonColor: '#d63384'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          // Pop-up Pertanyaan Kedua
+          Swal.fire({
+            title: 'Makasih ya udah selalu ada 💖',
+            text: 'Jangan pernah berubah dan tetap jadi yang terbaik buat aku ya!',
+            imageUrl: 'https://feeldreams.github.io/pandakuning.gif',
+            imageWidth: 120,
+            imageHeight: 120,
+            confirmButtonText: 'I Love You! 🥰',
+            confirmButtonColor: '#d63384'
+          }).then(() => {
+            
+            // Pop-up Akhir
+            Swal.fire({
+              title: 'Love You Too! 💕✨',
+              text: 'Sekali lagi, Happy Birthday ya manisku!',
+              icon: 'success',
+              confirmButtonColor: '#d63384'
+            });
+
+          });
+
+        }
+      });
+    }
+  </script>
+</body>
+</html>
